@@ -1,6 +1,7 @@
 import { use, useEffect, useState } from 'react'
 import './App.css'
 import SearchBar from '../components/SearchBar';
+import WeatherCard from '../components/WeatherCard';
 const apiKey = import.meta.env.VITE_API_KEY;
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
   }, [city])
 
   const fetchWeatherData = async () => {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
     const data = await response.json()
     console.log(`Fetching weather data for ${city}...`)
     console.log(data)
@@ -34,7 +35,8 @@ function App() {
   return (
     <div className="app">
       <SearchBar city={city} setCity={setCity} />
-      <h1>{weatherData ? weatherData.sys.country : 'Loading...'}</h1>
+      {/* <h1>{weatherData ? weatherData.sys.country : 'Loading...'}</h1> */}
+      <WeatherCard weatherData={weatherData} />
     </div>
   )
 }

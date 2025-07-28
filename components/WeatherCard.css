@@ -1,0 +1,65 @@
+.weatherCard{
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 240px;
+    padding: 32px;
+    width: 100%;
+    max-width: 860px;
+    background-color: hsl(var(--card));
+    margin: 32px auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+}
+.weatherCard .location{
+    color: hsl(var(--muted-foreground));
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.location svg{
+    width: 24px;
+    height: 24px;
+    fill: hsl(var(--muted-foreground));
+}
+.weather {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.weather .temperature {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+.weather .temperature h1 {
+    font-size: 4rem;
+    font-weight: 300;
+    color: hsl(var(--white));
+    margin: 0;
+}
+.weather .temperature .description {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: hsl(var(--muted-foreground));
+    padding: 5px 0;
+    text-transform: capitalize;
+}
+.weather .temperature .feels-like {
+    font-size: 1rem;
+    color: hsl(var(--muted-foreground));
+}
+.weather .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.weather .icon svg {
+    width: 130px;
+    height: 130px;
+    fill: hsl(var(--primary));
+}
