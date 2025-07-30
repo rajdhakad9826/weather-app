@@ -1,0 +1,58 @@
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 32px;
+  max-width: 860px;
+  gap: 12px;
+  gap: 20px;
+}
+
+.weather-detail-box {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background: hsl(var(--card));
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+  padding: 0 20px;
+}
+
+.icon-weather-details {
+  margin-right: 12px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(var(--primary) / 0.1);
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.icon-weather-details svg {
+    width: 24px;
+    height: 24px;
+    color: hsl(var(--primary));
+}
+
+.Details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: hsl(var(--muted-foreground));
+}
+
+.value {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: hsl(var(--white));
+}

@@ -2,6 +2,7 @@ import { use, useEffect, useState } from 'react'
 import './App.css'
 import SearchBar from '../components/SearchBar';
 import WeatherCard from '../components/WeatherCard';
+import WeatherDetails from '../components/WeatherDetails';
 const apiKey = import.meta.env.VITE_API_KEY;
 
 function App() {
@@ -36,7 +37,17 @@ function App() {
     <div className="app">
       <SearchBar city={city} setCity={setCity} />
       {/* <h1>{weatherData ? weatherData.sys.country : 'Loading...'}</h1> */}
-      <WeatherCard weatherData={weatherData} />
+      {weatherData && (
+  <>
+    <WeatherCard weatherData={weatherData} />
+    <WeatherDetails
+      humidity={weatherData.main.humidity}
+      windSpeed={weatherData.wind.speed * 3.6}
+      feelsLike={weatherData.main.feels_like}
+      visibility={weatherData.visibility / 1000}
+    />
+  </>
+)}
     </div>
   )
 }
