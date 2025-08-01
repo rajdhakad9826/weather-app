@@ -8,6 +8,7 @@ const apiKey = import.meta.env.VITE_API_KEY;
 function App() {
   const [weatherData, setWeatherData] = useState(null)
   const [city, setCity] = useState('Delhi')
+  const [forecastData, setForecastData] = useState(null)
 
   useEffect(() => {
     if (!city) return;
@@ -19,9 +20,15 @@ function App() {
 
   const fetchWeatherData = async () => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+    const forecastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`)
+    if (!response.ok || !forecastResponse.ok) {
+      console.error('Error fetching weather data');
+      return;
+    }
     const data = await response.json()
-    console.log(`Fetching weather data for ${city}...`)
+    const forecastData = await forecastResponse.json()
     console.log(data)
+    console.log(forecastData)
     if (data.cod !== 200) {
       console.error(`Error fetching weather data: ${data.message}`);
       return;
@@ -31,6 +38,7 @@ function App() {
       return;
     }
     setWeatherData(data);
+    setForecastData(forecastData);
   }
 
   return (
