@@ -3,6 +3,7 @@ import './App.css'
 import SearchBar from '../components/SearchBar';
 import WeatherCard from '../components/WeatherCard';
 import WeatherDetails from '../components/WeatherDetails';
+import ForecastList from '../components/ForecastList';
 const apiKey = import.meta.env.VITE_API_KEY;
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
     const forecastData = await forecastResponse.json()
     console.log(data)
     console.log(forecastData)
-    if (data.cod !== 200) {
+    if (data.cod != '200') {
       console.error(`Error fetching weather data: ${data.message}`);
       return;
     }
@@ -38,13 +39,21 @@ function App() {
       return;
     }
     setWeatherData(data);
-    setForecastData(forecastData);
+    filterForecastData(forecastData);
+  }
+
+  const filterForecastData = (data) => {
+    const filtered = data.list.filter((item) => {
+      const date = new Date(item.dt * 1000);
+      return date.getHours() === 23; // Keep only 11 PM forecasts
+    });
+    setForecastData(filtered);
+    console.log(filtered,'<filtered_forecast_data>');
   }
 
   return (
     <div className="app">
       <SearchBar city={city} setCity={setCity} />
-      {/* <h1>{weatherData ? weatherData.sys.country : 'Loading...'}</h1> */}
       {weatherData && (
   <>
     <WeatherCard weatherData={weatherData} />
@@ -56,6 +65,9 @@ function App() {
     />
   </>
 )}
+      {forecastData && (
+        <ForecastList forecastData={forecastData} />
+      )}
     </div>
   )
 }
