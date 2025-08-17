@@ -3,7 +3,7 @@
     max-width: 860px;
     overflow-x: auto;
     overflow-y: hidden;
-    height: 300px;
+    height: 330px;
     border-radius: 10px;
     padding: 32px;
     margin: 0 auto;
@@ -17,7 +17,7 @@
 .forecast-list h2 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: hsl(var(--muted-foreground));
+    color: hsl(var(--white));
     margin-bottom: 16px;
 }
 
@@ -35,8 +35,53 @@
     position: relative;
     width: 140px;
     height: 188px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
     flex-shrink: 0;
     background: hsl(var(--sky-light));
+}
+
+.forecast-card h3 {
+    text-align: center;
+    font-size: 0.975rem;
+    color: hsl(var(--white));
+}
+
+.forecast-card .icon{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.forecast-card .icon svg {
+    width: 80px;
+    height: 80px;
+    color: hsl(var(--primary));
+}
+.forecast-card .description {
+    text-align: center;
+    font-size: 0.95rem;
+    color: hsl(var(--muted-foreground));
+}
+.forecast-card .temperature {
+    text-align: center;
+    font-size: 0.975rem;
+    color: hsl(var(--white));
+}
+
+ .forecast-list::-webkit-scrollbar {
+  height: 4px; /* Only affects horizontal scrollbar */
+}
+
+.forecast-list::-webkit-scrollbar-track {
+  background: hsl(var(--sky-light)); /* Track background */
+  border-radius: 4px;
+}
+
+.forecast-list::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--primary)); /* Scroll handle color */
+  border-radius: 4px;
 }
