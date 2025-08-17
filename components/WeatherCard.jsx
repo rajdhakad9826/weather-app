@@ -1,47 +1,7 @@
 import React from "react";
 import "./WeatherCard.css";
-import { IoIosSunny } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
-
-import {
-  WiDaySunny,
-  WiCloud,
-  WiRain,
-  WiThunderstorm,
-  WiSnow,
-  WiFog,
-  WiSprinkle,
-  WiDust,
-  WiTornado,
-} from "react-icons/wi";
-
-const getWeatherIcon = (main) => {
-  switch (main) {
-    case "Clear":
-      return <WiDaySunny/>;
-    case "Clouds":
-      return <WiCloud/>;
-    case "Rain":
-      return <WiRain/>;
-    case "Drizzle":
-      return <WiSprinkle/>;
-    case "Thunderstorm":
-      return <WiThunderstorm/>;
-    case "Snow":
-      return <WiSnow/>;
-    case "Mist":
-    case "Haze":
-    case "Fog":
-      return <WiFog/>;
-    case "Dust":
-    case "Sand":
-      return <WiDust/>;
-    case "Tornado":
-      return <WiTornado/>;
-    default:
-      return <WiDaySunny/>;
-  }
-};
+import GetWeatherIcon from "./GetWeatherIcon";
 
 const WeatherCard = ({ weatherData }) => {
   return (
@@ -61,7 +21,7 @@ const WeatherCard = ({ weatherData }) => {
           </p>
         </div>
         <div className="icon">
-          {getWeatherIcon(weatherData?.weather[0]?.main)}
+          {<GetWeatherIcon weather={weatherData?.weather[0]?.main} />}
         </div>
       </div>
     </div>
